@@ -1414,10 +1414,12 @@ class BBCooker:
             msg = None
             interrupted = 0
             if abort or self.state == state.forceshutdown:
+                bb.warn("builtTarg forceshutdown state")
                 rq.finish_runqueue(True)
                 msg = "Forced shutdown"
                 interrupted = 2
             elif self.state == state.shutdown:
+                bb.warn("builtTarg shutdown state")
                 rq.finish_runqueue(False)
                 msg = "Stopped build"
                 interrupted = 1
